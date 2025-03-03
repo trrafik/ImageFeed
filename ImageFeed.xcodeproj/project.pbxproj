@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		B7BE423D2D70F23C00FB869F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE423C2D70F23C00FB869F /* AppDelegate.swift */; };
 		B7BE423F2D70F23C00FB869F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE423E2D70F23C00FB869F /* SceneDelegate.swift */; };
-		B7BE42412D70F23C00FB869F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE42402D70F23C00FB869F /* ViewController.swift */; };
+		B7BE42412D70F23C00FB869F /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE42402D70F23C00FB869F /* ImagesListViewController.swift */; };
 		B7BE42442D70F23C00FB869F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B7BE42432D70F23C00FB869F /* Base */; };
 		B7BE42462D70F23D00FB869F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7BE42452D70F23D00FB869F /* Assets.xcassets */; };
 		B7BE42492D70F23D00FB869F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B7BE42482D70F23D00FB869F /* Base */; };
+		B7BF0FF62D747C8C004775B2 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF0FF52D747C8C004775B2 /* ImagesListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B7BE42392D70F23C00FB869F /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BE423C2D70F23C00FB869F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7BE423E2D70F23C00FB869F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B7BE42402D70F23C00FB869F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B7BE42402D70F23C00FB869F /* ImagesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListViewController.swift; sourceTree = "<group>"; };
 		B7BE42432D70F23C00FB869F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B7BE42452D70F23D00FB869F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7BE42482D70F23D00FB869F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7BE424A2D70F23D00FB869F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7BF0FF52D747C8C004775B2 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +60,22 @@
 			children = (
 				B7BE423C2D70F23C00FB869F /* AppDelegate.swift */,
 				B7BE423E2D70F23C00FB869F /* SceneDelegate.swift */,
-				B7BE42402D70F23C00FB869F /* ViewController.swift */,
+				B7BF0FF72D747CC4004775B2 /* ImagesList */,
 				B7BE42422D70F23C00FB869F /* Main.storyboard */,
 				B7BE42452D70F23D00FB869F /* Assets.xcassets */,
 				B7BE42472D70F23D00FB869F /* LaunchScreen.storyboard */,
 				B7BE424A2D70F23D00FB869F /* Info.plist */,
 			);
 			path = ImageFeed;
+			sourceTree = "<group>";
+		};
+		B7BF0FF72D747CC4004775B2 /* ImagesList */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE42402D70F23C00FB869F /* ImagesListViewController.swift */,
+				B7BF0FF52D747C8C004775B2 /* ImagesListCell.swift */,
+			);
+			path = ImagesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7BE42412D70F23C00FB869F /* ViewController.swift in Sources */,
+				B7BE42412D70F23C00FB869F /* ImagesListViewController.swift in Sources */,
+				B7BF0FF62D747C8C004775B2 /* ImagesListCell.swift in Sources */,
 				B7BE423D2D70F23C00FB869F /* AppDelegate.swift in Sources */,
 				B7BE423F2D70F23C00FB869F /* SceneDelegate.swift in Sources */,
 			);
