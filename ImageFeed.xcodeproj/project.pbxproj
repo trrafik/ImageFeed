@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7206B372D777E1B004DBACD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7206B362D777E1B004DBACD /* ProfileViewController.swift */; };
+		B7425C7F2D7DDD5500FB0906 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7425C7E2D7DDD5500FB0906 /* SingleImageViewController.swift */; };
 		B7BE423D2D70F23C00FB869F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE423C2D70F23C00FB869F /* AppDelegate.swift */; };
 		B7BE423F2D70F23C00FB869F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE423E2D70F23C00FB869F /* SceneDelegate.swift */; };
 		B7BE42412D70F23C00FB869F /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE42402D70F23C00FB869F /* ImagesListViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7206B362D777E1B004DBACD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B7425C7E2D7DDD5500FB0906 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		B7BE42392D70F23C00FB869F /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BE423C2D70F23C00FB869F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7BE423E2D70F23C00FB869F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +43,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7206B382D777F46004DBACD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B7206B362D777E1B004DBACD /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B7425C802D7E095D00FB0906 /* SingleImageView */ = {
+			isa = PBXGroup;
+			children = (
+				B7425C7E2D7DDD5500FB0906 /* SingleImageViewController.swift */,
+			);
+			path = SingleImageView;
+			sourceTree = "<group>";
+		};
 		B7BE42302D70F23C00FB869F = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +80,8 @@
 			children = (
 				B7BE423C2D70F23C00FB869F /* AppDelegate.swift */,
 				B7BE423E2D70F23C00FB869F /* SceneDelegate.swift */,
+				B7425C802D7E095D00FB0906 /* SingleImageView */,
+				B7206B382D777F46004DBACD /* Profile */,
 				B7BF0FF72D747CC4004775B2 /* ImagesList */,
 				B7BE42422D70F23C00FB869F /* Main.storyboard */,
 				B7BE42452D70F23D00FB869F /* Assets.xcassets */,
@@ -151,7 +173,9 @@
 			files = (
 				B7BE42412D70F23C00FB869F /* ImagesListViewController.swift in Sources */,
 				B7BF0FF62D747C8C004775B2 /* ImagesListCell.swift in Sources */,
+				B7206B372D777E1B004DBACD /* ProfileViewController.swift in Sources */,
 				B7BE423D2D70F23C00FB869F /* AppDelegate.swift in Sources */,
+				B7425C7F2D7DDD5500FB0906 /* SingleImageViewController.swift in Sources */,
 				B7BE423F2D70F23C00FB869F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
