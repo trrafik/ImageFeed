@@ -60,6 +60,12 @@ final class ProfileViewController: UIViewController {
     @objc
     private func didTapButton() {
         // TODO: - Добавить логику при нажатии на кнопку
+        // временное решение для очистки токена авторизации
+        print("Токен: \(OAuth2TokenStorage.shared.token ?? "Токен не найден")")
+        UserDefaults.standard.removeObject(forKey: "access_token")
+        if UserDefaults.standard.object(forKey: "access_token") == nil {
+            print("Токен успешно удален")
+        }
     }
     
     private func setupСonstraints() {
