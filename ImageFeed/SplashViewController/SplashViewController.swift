@@ -24,11 +24,11 @@ final class SplashViewController: UIViewController {
         }
         let tabBarController = UIStoryboard(name: "Main", bundle: .main)
             .instantiateViewController(withIdentifier: "TabBarViewController")
-           
+        
         UIView.transition(with: window, duration: 0.7, options: .transitionFlipFromRight) {
             window.rootViewController = tabBarController
         }
-
+        
     }
 }
 
@@ -45,7 +45,7 @@ extension SplashViewController {
             viewController.delegate = self
         } else {
             super.prepare(for: segue, sender: sender)
-            }
+        }
     }
 }
 

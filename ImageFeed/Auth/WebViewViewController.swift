@@ -7,7 +7,7 @@ enum WebViewConstants {
 
 protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
-    // ЗАЧЕМ???
+    // ↓ пока не используется
     func webViewViewControllerDidCancel(_ vc: WebViewViewController)
 }
 
@@ -16,7 +16,7 @@ final class WebViewViewController: UIViewController {
     @IBOutlet private var progressView: UIProgressView!
     
     weak var delegate: WebViewViewControllerDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
@@ -29,19 +29,19 @@ final class WebViewViewController: UIViewController {
             print("urlComponents is nil")
             return
         }
-
+        
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: Constants.accessKey),
             URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
             URLQueryItem(name: "scope", value: Constants.accessScope)
         ]
-
+        
         guard let url = urlComponents.url else {
             print("urlComponents.url is nil")
             return
         }
-
+        
         let request = URLRequest(url: url)
         webView.load(request)
     }
@@ -55,7 +55,7 @@ final class WebViewViewController: UIViewController {
             context: nil)
         updateProgress()
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), context: nil)
@@ -73,7 +73,7 @@ final class WebViewViewController: UIViewController {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
-
+    
     private func updateProgress() {
         progressView.progress = Float(webView.estimatedProgress)
         progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
@@ -86,12 +86,12 @@ extension WebViewViewController: WKNavigationDelegate {
         decidePolicyFor navigationAction: WKNavigationAction,
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
-         if let code = code(from: navigationAction) {
+        if let code = code(from: navigationAction) {
             delegate?.webViewViewController(self, didAuthenticateWithCode: code)
             decisionHandler(.cancel)
-         } else {
+        } else {
             decisionHandler(.allow)
-         }
+        }
     }
     
     private func code(from navigationAction: WKNavigationAction) -> String? {

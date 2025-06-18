@@ -6,7 +6,7 @@ final class OAuth2TokenStorage {
     
     private let userDefaults = UserDefaults.standard
     private let tokenKey = "access_token"
-
+    
     var token: String? {
         get {
             return userDefaults.string(forKey: tokenKey)

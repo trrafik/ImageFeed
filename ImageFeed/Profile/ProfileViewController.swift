@@ -2,10 +2,10 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     private let avatarImageView: UIImageView = {
-            let view = UIImageView()
-            let image = UIImage(named: "avatar")
-            view.image = image
-            return view
+        let view = UIImageView()
+        let image = UIImage(named: "avatar")
+        view.image = image
+        return view
     }()
     
     private let nameLabel: UILabel = {
@@ -41,7 +41,7 @@ final class ProfileViewController: UIViewController {
         button.tintColor = UIColor(red: 245/255.0, green: 107/255.0, blue: 108/255.0, alpha: 1)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,7 +51,7 @@ final class ProfileViewController: UIViewController {
          descriptionLabel,
          logoutButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-             view.addSubview($0)
+            view.addSubview($0)
         }
         
         setupСonstraints()
