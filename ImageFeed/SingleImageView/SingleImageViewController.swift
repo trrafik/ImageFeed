@@ -1,7 +1,7 @@
 import UIKit
 
 final class SingleImageViewController: UIViewController {
-   
+    
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var scrollView: UIScrollView!
     
@@ -21,7 +21,7 @@ final class SingleImageViewController: UIViewController {
     var image: UIImage? {
         didSet {
             guard isViewLoaded, let image else { return }
-
+            
             imageView.image = image
             imageView.frame.size = image.size
             rescaleAndCenterImageInScrollView(image: image)
@@ -32,7 +32,7 @@ final class SingleImageViewController: UIViewController {
         super.viewDidLoad()
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
-
+        
         guard let image else { return }
         imageView.image = image
         imageView.frame.size = image.size
@@ -47,7 +47,7 @@ final class SingleImageViewController: UIViewController {
         let imageSize = image.size
         let hScale = visibleRectSize.width / imageSize.width
         let vScale = visibleRectSize.height / imageSize.height
-        let scale = min(maxZoomScale, max(minZoomScale, min(hScale, vScale)))
+        let scale = max(minZoomScale, min(maxZoomScale, max(hScale, vScale)))
         scrollView.setZoomScale(scale, animated: false)
         scrollView.layoutIfNeeded()
         let newContentSize = scrollView.contentSize
