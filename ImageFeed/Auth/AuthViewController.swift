@@ -1,4 +1,5 @@
 import UIKit
+import ProgressHUD
 
 protocol AuthViewControllerDelegate: AnyObject {
     func didAuthenticate(_ vc: AuthViewController)
@@ -6,6 +7,7 @@ protocol AuthViewControllerDelegate: AnyObject {
 
 final class AuthViewController: UIViewController {
     private let showWebViewSegueIdentifier = "ShowWebView"
+    private let oauth2Service = OAuth2Service.shared
     weak var delegate: AuthViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -38,15 +40,20 @@ final class AuthViewController: UIViewController {
 
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
-        OAuth2Service.shared.fetchOAuthToken(code: code) { [weak self] result in
-            guard let self else {return}
-            
+        UIBlockingProgressHUD.show()
+        
+        fetchOAuthToken(code) { [weak self] result in
+            // Скрываем индикатор загрузки
+            UIBlockingProgressHUD.dismiss()
+
+            guard let self else { return }
+
             switch result {
-            case .success(let token):
-                print("Получен токен: \(token)")
+            case .success:
                 self.delegate?.didAuthenticate(self)
-            case .failure(let error):
-                print("Ошибка при получении токена: \(error.localizedDescription)")
+            case let .failure(error):
+                print("Ошибка при аутентификации: \(error.localizedDescription)")
+                self.showAuthErrorAlert()  // Показываем алерт при ошибке
             }
         }
     }
@@ -54,5 +61,26 @@ extension AuthViewController: WebViewViewControllerDelegate {
     // ↓ функция на будущее, пока не используется
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
         vc.dismiss(animated: true)
+    }
+}
+
+extension AuthViewController {
+    private func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
+        oauth2Service.fetchOAuthToken(code) { result in
+            completion(result)
+        }
+    }
+}
+
+extension AuthViewController {
+    func showAuthErrorAlert() {
+        let alertController = UIAlertController(
+            title: "Что-то пошло не так",
+            message: "Не удалось войти в систему",
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "Ок", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

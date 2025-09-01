@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     private let avatarImageView: UIImageView = {
@@ -42,8 +43,12 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
+    private var profileImageServiceObserver: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(named: "ypBlack")
         
         [avatarImageView,
          nameLabel,
@@ -55,17 +60,70 @@ final class ProfileViewController: UIViewController {
         }
         
         setupСonstraints()
+        
+        if let profile = ProfileService.shared.profile {
+            updateProfileDetails(profile: profile)
+        }
+        
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(
+                forName: ProfileImageService.didChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()
+            }
+        updateAvatar()
+    }
+    private func updateProfileDetails(profile: Profile) {
+        nameLabel.text = profile.name.isEmpty
+            ? "Имя не указано"
+            : profile.name
+        loginNameLabel.text = profile.loginName.isEmpty
+            ? "@неизвестный_пользователь"
+            : profile.loginName
+        descriptionLabel.text = (profile.bio?.isEmpty ?? true)
+            ? "Профиль не заполнен"
+            : profile.bio
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else { return }
+        print("imageUrl: \(url)")
+
+        let placeholderImage = UIImage(systemName: "person.circle.fill")?
+            .withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+            .withConfiguration(UIImage.SymbolConfiguration(pointSize: 70, weight: .regular))
+
+        let processor = RoundCornerImageProcessor(cornerRadius: 35) // Радиус для круга
+        avatarImageView.kf.indicatorType = .activity
+        avatarImageView.kf.setImage(
+            with: url,
+            placeholder: placeholderImage,
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale), // Учитываем масштаб экрана
+                .cacheOriginalImage, // Кэшируем оригинал
+                .forceRefresh // Игнорируем кэш, чтобы обновить
+            ]) { result in
+
+                switch result {
+                case .success(let value):
+                    print(value.image)
+                    print(value.cacheType)
+                    print(value.source)
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
     
     @objc
     private func didTapButton() {
-        // TODO: - Добавить логику при нажатии на кнопку
-        // временное решение для очистки токена авторизации
-        print("Токен: \(OAuth2TokenStorage.shared.token ?? "Токен не найден")")
-        UserDefaults.standard.removeObject(forKey: "access_token")
-        if UserDefaults.standard.object(forKey: "access_token") == nil {
-            print("Токен успешно удален")
-        }
     }
     
     private func setupСonstraints() {
@@ -91,4 +149,5 @@ final class ProfileViewController: UIViewController {
             logoutButton.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
         ])
     }
+    
 }
