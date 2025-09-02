@@ -5,7 +5,7 @@ final class SplashViewController: UIViewController {
     private let storage = OAuth2TokenStorage.shared
     private let profileService = ProfileService.shared
     
-    private var imageView: UIImageView!
+    private var imageView: UIImageView?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -21,19 +21,21 @@ final class SplashViewController: UIViewController {
         }
     }
     
-//        override func viewWillAppear(_ animated: Bool) {
-//            super.viewWillAppear(animated)
-//            setNeedsStatusBarAppearanceUpdate()
-//        }
-//    
-//        override var preferredStatusBarStyle: UIStatusBarStyle {
-//            .lightContent
-//        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
     
     private func setupImageView(){
-        let imageSplashScreenLogo = UIImage(named: "splash_screen_logo")
+        let imageSplashScreenLogo = UIImage(resource: .splashScreenLogo)
         
         imageView = UIImageView(image: imageSplashScreenLogo)
+        
+        guard let imageView else {return}
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(imageView)

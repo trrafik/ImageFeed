@@ -48,33 +48,31 @@ final class OAuth2Service {
         }
         
         let task = urlSession.objectTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
-            DispatchQueue.main.async {
-                UIBlockingProgressHUD.dismiss()
-                guard let self = self else { return }
+            UIBlockingProgressHUD.dismiss()
+            guard let self = self else { return }
 
-                switch result {
-                case .success(let body):
-                    let authToken = body.accessToken
-                    self.authToken = authToken // сохраняем в свойство
-                    completion(.success(authToken)) // возвращаем наружу
+            switch result {
+            case .success(let body):
+                let authToken = body.accessToken
+                self.authToken = authToken // сохраняем в свойство
+                completion(.success(authToken)) // возвращаем наружу
 
-                    self.task = nil
-                    self.lastCode = nil
+                self.task = nil
+                self.lastCode = nil
 
-                case .failure(let error):
-                    print("[fetchOAuthToken]: Ошибка запроса: \(error.localizedDescription)")
-                    completion(.failure(error)) // ошибка
+            case .failure(let error):
+                print("[fetchOAuthToken]: Ошибка запроса: \(error.localizedDescription)")
+                completion(.failure(error)) // ошибка
 
-                    self.task = nil
-                    self.lastCode = nil
-                }
+                self.task = nil
+                self.lastCode = nil
             }
         }
         self.task = task
         task.resume()
     }
     
-    func makeOAuthTokenRequest(code: String) -> URLRequest? {
+    private func makeOAuthTokenRequest(code: String) -> URLRequest? {
         guard var urlComponents = URLComponents(string: URLConstants.getTokenURL) else {
             assertionFailure("Failed to create URL")
             return nil

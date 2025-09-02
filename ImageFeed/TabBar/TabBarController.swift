@@ -16,6 +16,6 @@ final class TabBarController: UITabBarController {
             selectedImage: nil
         )
         
-        self.viewControllers = [imageListViewController, profileViewController]
+        viewControllers = [imageListViewController, profileViewController]
     }
 }

@@ -48,7 +48,7 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "ypBlack")
+        view.backgroundColor = UIColor(resource: .ypBlack)
         
         [avatarImageView,
          nameLabel,
