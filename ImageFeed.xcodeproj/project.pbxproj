@@ -31,6 +31,8 @@
 		B7C2A0742E11A628004B257E /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B7C2A0732E11A628004B257E /* ProgressHUD */; };
 		B7C2D9EB2E65F18900BC3109 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C2D9EA2E65F18900BC3109 /* TabBarController.swift */; };
 		B7DBF3292E01975E001645BB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DBF3282E01975E001645BB /* SplashViewController.swift */; };
+		B7E6C2E12E6F3BC8007CAFD1 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C2E02E6F3BC8007CAFD1 /* ImagesListService.swift */; };
+		B7E6C2E32E771FA4007CAFD1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C2E22E771FA4007CAFD1 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		B7BF0FF52D747C8C004775B2 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		B7C2D9EA2E65F18900BC3109 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B7DBF3282E01975E001645BB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		B7E6C2E02E6F3BC8007CAFD1 /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
+		B7E6C2E22E771FA4007CAFD1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,8 @@
 			children = (
 				B7BE42402D70F23C00FB869F /* ImagesListViewController.swift */,
 				B7BF0FF52D747C8C004775B2 /* ImagesListCell.swift */,
+				B7E6C2E02E6F3BC8007CAFD1 /* ImagesListService.swift */,
+				B7E6C2E22E771FA4007CAFD1 /* Models.swift */,
 			);
 			path = ImagesList;
 			sourceTree = "<group>";
@@ -285,7 +291,9 @@
 				B7760C222E2EDC7E00114842 /* ProfileImageService.swift in Sources */,
 				B7425C7F2D7DDD5500FB0906 /* SingleImageViewController.swift in Sources */,
 				B76220252D920D7D0030B007 /* WebViewViewController.swift in Sources */,
+				B7E6C2E12E6F3BC8007CAFD1 /* ImagesListService.swift in Sources */,
 				B74CE30A2DFF1694005BA2D0 /* OAuth2Service.swift in Sources */,
+				B7E6C2E32E771FA4007CAFD1 /* Models.swift in Sources */,
 				B7BE423F2D70F23C00FB869F /* SceneDelegate.swift in Sources */,
 				B7324BDC2E16EB60001DC12C /* UIBlockingProgressHUD.swift in Sources */,
 				B7324BDE2E16F01E001DC12C /* ProfileService.swift in Sources */,
