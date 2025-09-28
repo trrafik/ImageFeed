@@ -10,7 +10,6 @@ final class ImagesListViewController: UIViewController {
     
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     
-    //private let photosName: [String] = Array(0..<20).map{ "\($0)" }
     private var photos: [Photo] = []
     
     private lazy var dateFormatter: DateFormatter = {
@@ -48,8 +47,6 @@ final class ImagesListViewController: UIViewController {
             }
             let largeImageURL = URL(string: photos[indexPath.row].largeImageURL)
             viewController.imageURL = largeImageURL
-//            let image = UIImage(named: photosName[indexPath.row])
-//            viewController.image = image
         } else {
             super.prepare(for: segue, sender: sender)
         }

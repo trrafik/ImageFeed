@@ -12,21 +12,13 @@ struct Photo {
 
 final class ImagesListService {
     static let shared = ImagesListService()
-    
+    private init() {}
     private(set) var photos: [Photo] = []
     private var lastLoadedPage: Int?
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
     private var task: URLSessionTask?
     private let perPage = 10
     private let dateFormatter = ISO8601DateFormatter()
-    
-    private enum HTTPMethod: String {
-        case get = "GET"
-        case post = "POST"
-        case put = "PUT"
-        case patch = "PATCH"
-        case delete = "DELETE"
-    }
     
     func fetchPhotosNextPage() {
         task?.cancel()
@@ -79,7 +71,7 @@ final class ImagesListService {
         let task = URLSession.shared.objectTask(for: request) {[weak self] (result: Result<LikePhotoResult, Error>) in
             guard let self else {return}
             switch result {
-            case .success(let photoResult):
+            case .success(_):
                 if let index = self.photos.firstIndex(where: {$0.id == photoId}) {
                     let photo = self.photos[index]
                     let newPhoto = Photo(id: photo.id,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B714C9E22E89604E00FBAC6F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714C9E12E89604E00FBAC6F /* HTTPMethod.swift */; };
 		B7206B372D777E1B004DBACD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7206B362D777E1B004DBACD /* ProfileViewController.swift */; };
 		B7324BDC2E16EB60001DC12C /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7324BDB2E16EB5F001DC12C /* UIBlockingProgressHUD.swift */; };
 		B7324BDE2E16F01E001DC12C /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7324BDD2E16F01E001DC12C /* ProfileService.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B714C9E12E89604E00FBAC6F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B7206B362D777E1B004DBACD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B7324BDB2E16EB5F001DC12C /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		B7324BDD2E16F01E001DC12C /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				B7BE423C2D70F23C00FB869F /* AppDelegate.swift */,
 				B7BE423E2D70F23C00FB869F /* SceneDelegate.swift */,
+				B714C9E12E89604E00FBAC6F /* HTTPMethod.swift */,
 				B7DBF32A2E01A885001645BB /* SplashViewController */,
 				B74CE30D2DFF1FCF005BA2D0 /* URLSession */,
 				B74CE30F2DFF292E005BA2D0 /* OAuth2 */,
@@ -343,6 +346,7 @@
 			files = (
 				B74CE3112DFF2972005BA2D0 /* OAuth2TokenStorage.swift in Sources */,
 				B7BE42412D70F23C00FB869F /* ImagesListViewController.swift in Sources */,
+				B714C9E22E89604E00FBAC6F /* HTTPMethod.swift in Sources */,
 				B74CE30C2DFF1FC0005BA2D0 /* URLSession+data.swift.swift in Sources */,
 				B7BF0FF62D747C8C004775B2 /* ImagesListCell.swift in Sources */,
 				B7206B372D777E1B004DBACD /* ProfileViewController.swift in Sources */,
