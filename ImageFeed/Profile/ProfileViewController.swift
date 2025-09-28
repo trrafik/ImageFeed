@@ -4,14 +4,11 @@ import Kingfisher
 final class ProfileViewController: UIViewController {
     private let avatarImageView: UIImageView = {
         let view = UIImageView()
-        let image = UIImage(named: "avatar")
-        view.image = image
         return view
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Екатерина Новикова"
         label.font = UIFont.systemFont(ofSize: 23.0, weight: .semibold)
         label.textColor = .white
         return label
@@ -19,7 +16,6 @@ final class ProfileViewController: UIViewController {
     
     private let loginNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "@ekaterina_nov"
         label.font = UIFont.systemFont(ofSize: 13.0)
         label.textColor = UIColor(red: 174/255.0, green: 175/255.0, blue: 180/255.0, alpha: 1)
         return label
@@ -27,7 +23,6 @@ final class ProfileViewController: UIViewController {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hello, world!"
         label.font = UIFont.systemFont(ofSize: 13.0)
         label.textColor = .white
         return label
@@ -124,6 +119,24 @@ final class ProfileViewController: UIViewController {
     
     @objc
     private func didTapButton() {
+        let alertController = UIAlertController(title: "Пока, пока!",
+                                                message: "Уверены, что хотите выйти?",
+                                                preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Нет", style: .default, handler: nil)
+        let acceptAction = UIAlertAction(title: "Да", style: .default) {_ in
+            ProfileLogoutService.shared.logout()
+            guard let window = UIApplication.shared.windows.first else {
+                assertionFailure("Invalid Configuration")
+                return
+            }
+            window.rootViewController = SplashViewController()
+        }
+        
+        alertController.addAction(acceptAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+        
     }
     
     private func setupСonstraints() {
