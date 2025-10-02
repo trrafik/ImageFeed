@@ -7,7 +7,7 @@ final class ImagesListViewControllerSpy: ImagesListViewControllerProtocol {
     
     // Spy свойства
     private(set) var updateTableViewCalled = false
-    private(set) var lastIndexPaths: [IndexPath]? = nil
+    private(set) var lastIndexPaths: [IndexPath]?
     private(set) var showErrorAlertCalled = false
     
     func updateTableViewAnimated(indexPaths: [IndexPath]?) {
