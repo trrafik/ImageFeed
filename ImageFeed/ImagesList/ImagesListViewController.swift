@@ -51,13 +51,13 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
         
         cell.cellImage.kf.indicatorType = .activity
         cell.cellImage.kf.setImage(with: URL(string: photo.thumbImageURL),
-                                   placeholder: UIImage(named: "cell_placeholder")) { [weak self] _ in
+                                   placeholder: UIImage(resource: .cellPlaceholder)) { [weak self] _ in
             self?.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
         cell.dateLabel.text = presenter?.formattedDate(for: photo)
         
-        let likeImage = photo.isLiked ? UIImage(named: "like_button_on") : UIImage(named: "like_button_off")
+        let likeImage = photo.isLiked ? UIImage(resource: .likeButtonOn) : UIImage(resource: .likeButtonOff)
         cell.likeButton.setImage(likeImage, for: .normal)
         cell.selectionStyle = .none
         cell.delegate = self

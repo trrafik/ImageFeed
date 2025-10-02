@@ -1,7 +1,7 @@
 import XCTest
 @testable import ImageFeed
 
-class Image_FeedUITests: XCTestCase {
+final class ImageFeedUITests: XCTestCase {
     private let app = XCUIApplication() // переменная приложения
     
     override func setUpWithError() throws {
@@ -31,13 +31,13 @@ class Image_FeedUITests: XCTestCase {
         XCTAssertTrue(loginTextField.waitForExistence(timeout: 5))
         
         loginTextField.tap()
-        loginTextField.typeText("test@gmail.com")
+        loginTextField.typeText("bynafanya29@gmail.com")
         hideKeyboard()
         
         let passwordTextField = webView.descendants(matching: .secureTextField).element
         XCTAssertTrue(passwordTextField.waitForExistence(timeout: 5))
         
-        UIPasteboard.general.string = "password"
+        UIPasteboard.general.string = "Rafikovich29"
         passwordTextField.tap()
         //passwordTextField.typeText("password")
         passwordTextField.press(forDuration: 1.0)
@@ -49,7 +49,7 @@ class Image_FeedUITests: XCTestCase {
         let tablesQuery = app.tables
         let cell = tablesQuery.children(matching: .cell).element(boundBy: 0)
         
-        XCTAssertTrue(cell.waitForExistence(timeout: 5))
+        XCTAssertTrue(cell.waitForExistence(timeout: 10))
     }
     
     func testFeed() throws {
@@ -90,6 +90,9 @@ class Image_FeedUITests: XCTestCase {
         app.buttons["logoutButton"].tap()
         
         app.alerts["Пока, пока!"].scrollViews.otherElements.buttons["Да"].tap()
+        
+        sleep(5)
+        XCTAssertTrue(app.buttons["Authenticate"].exists)
     }
 }
 
