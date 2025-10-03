@@ -18,17 +18,6 @@ final class SingleImageViewController: UIViewController {
         present(share, animated: true, completion: nil)
     }
     
-    // TODO: delete
-//    var image: UIImage? {
-//        didSet {
-//            guard isViewLoaded, let image else { return }
-//            
-//            imageView.image = image
-//            imageView.frame.size = image.size
-//            rescaleAndCenterImageInScrollView(image: image)
-//        }
-//    }
-    
     var imageURL: URL?
     
     override func viewDidLoad() {
@@ -36,12 +25,6 @@ final class SingleImageViewController: UIViewController {
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
         setImageView()
-        
-        // TODO: delete
-//        guard let image else { return }
-//        imageView.image = image
-//        imageView.frame.size = image.size
-//        rescaleAndCenterImageInScrollView(image: image)
     }
     
     private func rescaleAndCenterImageInScrollView(image: UIImage) {
