@@ -31,13 +31,13 @@ final class ImageFeedUITests: XCTestCase {
         XCTAssertTrue(loginTextField.waitForExistence(timeout: 5))
         
         loginTextField.tap()
-        loginTextField.typeText("bynafanya29@gmail.com")
+        loginTextField.typeText("test@gmail.com")
         hideKeyboard()
         
         let passwordTextField = webView.descendants(matching: .secureTextField).element
         XCTAssertTrue(passwordTextField.waitForExistence(timeout: 5))
         
-        UIPasteboard.general.string = "Rafikovich29"
+        UIPasteboard.general.string = "password"
         passwordTextField.tap()
         //passwordTextField.typeText("password")
         passwordTextField.press(forDuration: 1.0)
